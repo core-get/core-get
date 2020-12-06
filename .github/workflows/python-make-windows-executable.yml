@@ -3,8 +3,6 @@ name: Create Python executable on Windows
 on:
   release:
     types: [created]
-  pull_request:
-    branches: [ main ] 
 jobs:
   build:
     runs-on: windows-latest
