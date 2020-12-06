@@ -21,7 +21,7 @@ jobs:
         pip install pyinstaller
     - name: Create executable with pyinstaller
       run: |
-        pyinstaller --name core-get --onefile --specpath build --distpath build core_get\main.py
+        pyinstaller --name core-get --onefile core_get\main.py
     - uses: actions/upload-artifact@v2
       with:
         name: core-get-windows
