@@ -23,4 +23,4 @@ jobs:
         pip install pyinstaller
     - name: Create executable with pyinstaller
       run: |
-        pyinstaller cli/cli_main.py
+        pyinstaller core_get/cli/cli_main.py
