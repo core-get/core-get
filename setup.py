@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
-setup(name='core_get',
+setup(name='core-get',
       version='0.1.0',
-      description='Client for the core-get package sharing ecosystem',
-      url='https://gitlab.com/vitpeppar/core-get',
+      description='Client for the core-get package sharing system',
+      url='https://github.com/core-get/core-get',
       author='Oskar Holstensson',
       author_email='oskar@holstensson.se',
       license='MIT',
