@@ -40,5 +40,5 @@ jobs:
       with:
         upload_url: ${{ steps.get_release.outputs.upload_url }}
         asset_path: dist\core-get.exe
-        asset_name: core-get-windows
+        asset_name: core-get.exe
         asset_content_type: application/vnd.microsoft.portable-executable
