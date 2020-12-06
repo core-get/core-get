@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='core-get',
-      version='0.1.2',
+      version='0.1.3',
       description='Client for the core-get package sharing system',
       url='https://github.com/core-get/core-get',
       author='Oskar Holstensson',
