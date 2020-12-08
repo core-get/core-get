@@ -15,6 +15,4 @@ def cli_main(args: List[str]) -> int:
     if options is None:
         return 101
 
-    common_options, specific_options = options
-
-    return execute(common_options, specific_options, CliModule())
+    return execute(options.common_options, options.specific_options, CliModule())

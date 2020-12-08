@@ -1,4 +1,4 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, NamedTuple
 
 from injector import Module, Binder, Injector
 
@@ -30,7 +30,15 @@ class ParsersModule(Module):
         ]))
 
 
-def parse_options(args: List[str]) -> Optional[Tuple[CommonOptions, Options]]:
+class ParseResult(NamedTuple):
+    common_options: CommonOptions
+    specific_options: Options
+
+
+def parse_options(args: List[str]) -> Optional[ParseResult]:
     injector = Injector([ParsersModule()])
     main_parser = injector.get(MainParser)
-    return tuple(main_parser.parse(args))
+    options = main_parser.parse(args)
+    if options is None:
+        return None
+    return ParseResult(*options)
