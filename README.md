@@ -1,3 +1,11 @@
+# Core-get
+
+Client for the core-get package sharing system
+
+This command-line client can be used to download and publish packages to [core-get.org](https://core-get.org)
+
+## Roadmap
+
 ### Short-term goals
 * Facilitate VHDL FPGA development
 * Enable sharing of device-agnostic FPGA components
@@ -10,7 +18,8 @@
 * MyHDL support
 * Schematics support
 * Perfect integration with all tools
-### Nomenclature
+
+## Nomenclature
 * Component
 * Configuration
 * Device - A single FPGA chip (*not* a device family)
