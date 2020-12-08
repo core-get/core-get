@@ -1,7 +1,13 @@
+import os
+
+from semver import VersionInfo
 from setuptools import setup, find_packages
 
+# Fail here if the version info is malformed to avoid corrupting our PyPI versions
+version = VersionInfo.parse(os.environ['GITHUB_REF'])
+
 setup(name='core-get',
-      version='0.1.4',
+      version=str(version),
       description='Client for the core-get package sharing system',
       url='https://github.com/core-get/core-get',
       author='Oskar Holstensson',
