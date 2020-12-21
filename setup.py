@@ -26,5 +26,9 @@ setup(name='core-get',
           'semver~=2.13.0',
           'requests~=2.25.0',
       ],
+      tests_require=[
+          'pytest-httpserver~=0.3.6',
+          'Werkzeug~=1.0.1',
+      ],
       packages=find_packages(),
       zip_safe=False)

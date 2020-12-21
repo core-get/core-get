@@ -7,7 +7,7 @@ from typing import Dict, IO
 
 @dataclass
 class FlatFile:
-    def open(self, mode) -> IO[bytes]:
+    def open_read(self) -> IO[bytes]:
         raise NotImplementedError
 
     @property
