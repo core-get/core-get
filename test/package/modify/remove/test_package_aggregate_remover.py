@@ -5,7 +5,7 @@ from unittest.mock import Mock
 from core_get.configuration.installed_packages import InstalledPackages, InstalledPackage, InstalledFile
 from core_get.package.manifest import Manifest
 from core_get.package.modify.remove.package_aggregate_remover import PackageAggregateRemover
-from core_get.package.reference.package_reference import PackageReference, InstalledPackageReference
+from core_get.package.reference.package_reference import InstalledPackageReference
 
 
 class TestPackageAggregateRemover(TestCase):

@@ -17,4 +17,5 @@ class TestInstallOrderMaker(TestCase):
         manifest = Manifest('my_package', variant_manifests={'my_variant': variant_manifest})
         package_reference = PackageReference(manifest)
         install_order = install_order_maker.make('MYDEVICE', package_reference, PurePath('./extern'), True)
-        self.assertEqual(InstallOrder(package_reference, 'my_variant', PurePath('./extern/my_package-0.0.0'), True), install_order)
+        self.assertEqual(InstallOrder(package_reference, 'my_variant', PurePath('./extern/my_package-0.0.0'), True),
+                         install_order)
