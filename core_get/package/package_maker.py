@@ -1,7 +1,6 @@
-import zipfile
 from dataclasses import dataclass
 from logging import getLogger
-from pathlib import PurePath, Path
+from pathlib import PurePath
 
 from injector import inject
 

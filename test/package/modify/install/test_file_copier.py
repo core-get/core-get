@@ -13,7 +13,8 @@ from core_get.package.reference.package_reference import PackageReference
 class TestFileCopier(TestCase):
     def test_copy_package_files(self):
         file_system = Mock()
-        file_system.write_stream = Mock(return_value=b'00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF')
+        file_system.write_stream \
+            = Mock(return_value=b'00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF')
         flat_file = Mock()
         flat_file.path = PurePath('src/a.vhdl')
         stream = Mock()
@@ -26,4 +27,6 @@ class TestFileCopier(TestCase):
         reference = PackageReference(manifest)
         install_order = InstallOrder(reference, 'my_variant', PurePath(''), True)
         installed_files = file_copier.copy_package_files(install_order, flat_directory)
-        self.assertEqual([InstalledFile(PurePath('src/a.vhdl'), b'00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF')], installed_files)
+        self.assertEqual([InstalledFile(PurePath('src/a.vhdl'),
+                                        b'00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF')],
+                         installed_files)

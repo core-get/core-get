@@ -46,7 +46,8 @@ class TestPackageModificationChecker(TestCase):
         project_directory_manager.get_project_directory = Mock(return_value='.')
         file_system = Mock()
         file_system.read_file = Mock(return_value=b'hej')
-        file_system.glob = Mock(return_value=[PurePath('extern/my_package-0.0.0/a.vhdl'), PurePath('extern/my_package-0.0.0/b.vhdl')])
+        file_system.glob = Mock(return_value=[PurePath('extern/my_package-0.0.0/a.vhdl'),
+                                              PurePath('extern/my_package-0.0.0/b.vhdl')])
         package_modification_checker = PackageModificationChecker(project_directory_manager, file_system)
         manifest = Manifest('my_package')
         installed_files = [InstalledFile(PurePath('extern/my_package-0.0.0/a.vhdl'),
