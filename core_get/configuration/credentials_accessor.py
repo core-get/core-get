@@ -7,7 +7,6 @@ from core_get.configuration.credentials import Credentials
 from core_get.configuration.environment_settings import EnvironmentSettings
 from core_get.configuration.serialization.toml_serializer import TomlSerializer
 from core_get.file.file_system import FileSystem
-from core_get.file.flat.flat_file import FlatFile
 
 
 @inject
@@ -25,5 +24,5 @@ class CredentialsAccessor:
         credentials_data = self.toml_serializer.to_bytes(credentials)
         self.file_system.write_file(self.get_credentials_path(), credentials_data)
 
-    def get_credentials_path(self) -> FlatFile:
+    def get_credentials_path(self) -> PurePath:
         return self.environment_settings.app_dir / "credentials.toml"

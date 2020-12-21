@@ -6,7 +6,6 @@ from core_get.configuration.installed_packages import InstalledPackage, Installe
 from core_get.package.manifest import Manifest
 from core_get.package.modify.remove.package_aggregate_modification_checker import PackageAggregateModificationChecker, \
     ModifiedPackageException
-from core_get.package.modify.remove.package_modification_checker import PackageModificationChecker
 
 
 class TestPackageAggregateModificationChecker(TestCase):
@@ -17,7 +16,8 @@ class TestPackageAggregateModificationChecker(TestCase):
         installed_files = [InstalledFile(PurePath('./extern/my_package-0.0.0/a.vhdl'),
                                          b'00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF')]
         manifest = Manifest('my_package')
-        installed_packages = [InstalledPackage(manifest, 'my_variant', PurePath('./extern/my_package-0.0.0'), True, installed_files)]
+        installed_packages = [InstalledPackage(manifest, 'my_variant', PurePath('./extern/my_package-0.0.0'), True,
+                                               installed_files)]
         with self.assertRaises(ModifiedPackageException):
             package_aggregate_modification_checker.check_modifications(installed_packages, False)
 
@@ -28,7 +28,8 @@ class TestPackageAggregateModificationChecker(TestCase):
         installed_files = [InstalledFile(PurePath('./extern/my_package-0.0.0/a.vhdl'),
                                          b'00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF')]
         manifest = Manifest('my_package')
-        installed_packages = [InstalledPackage(manifest, 'my_variant', PurePath('./extern/my_package-0.0.0'), True, installed_files)]
+        installed_packages = [InstalledPackage(manifest, 'my_variant', PurePath('./extern/my_package-0.0.0'), True,
+                                               installed_files)]
         package_aggregate_modification_checker.check_modifications(installed_packages, True)
 
     def test_check_modifications_detects_nothing(self):
@@ -38,5 +39,6 @@ class TestPackageAggregateModificationChecker(TestCase):
         installed_files = [InstalledFile(PurePath('./extern/my_package-0.0.0/a.vhdl'),
                                          b'00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF')]
         manifest = Manifest('my_package')
-        installed_packages = [InstalledPackage(manifest, 'my_variant', PurePath('./extern/my_package-0.0.0'), True, installed_files)]
+        installed_packages = [InstalledPackage(manifest, 'my_variant', PurePath('./extern/my_package-0.0.0'), True,
+                                               installed_files)]
         package_aggregate_modification_checker.check_modifications(installed_packages, False)

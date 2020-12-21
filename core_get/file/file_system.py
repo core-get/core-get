@@ -12,11 +12,13 @@ from core_get.file.hash import Hash, HashDigest
 from core_get.options.common_options import CommonOptions
 
 
+# Taken from shutil
 COPY_BUFSIZE = 1024 * 1024 if os.name == 'nt' else 64 * 1024
 
 
 class DryRunFile(io.BytesIO):
     def __init__(self, file_name: PurePath):
+        super().__init__()
         self._file_name = file_name
 
     def __enter__(self):
@@ -30,6 +32,7 @@ class DryRunFile(io.BytesIO):
         length = self.tell()
         self.seek(prev_pos, io.SEEK_SET)
         print(f'Write {length} bytes to {self._file_name}')
+
 
 @inject
 @dataclass

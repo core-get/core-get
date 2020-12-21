@@ -31,5 +31,6 @@ class ActionsModule(Module):
             PackageOptions: Package,
             PublishOptions: Publish,
             RemoveOptions: Remove,
+            TestOptions: Test,
             YankOptions: Yank,
         }))
