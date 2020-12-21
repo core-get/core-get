@@ -6,7 +6,7 @@ from typing import Dict
 from injector import inject
 from semver import VersionInfo
 
-from core_get.catalog.network_service import NetworkService, NetworkException
+from core_get.catalog.network_service import NetworkService, NetworkError
 from core_get.configuration.credentials_accessor import CredentialsAccessor
 from core_get.configuration.environment_settings import EnvironmentSettings
 from core_get.package.manifest import Manifest
@@ -26,7 +26,7 @@ class CatalogService:
         package_url = f'{self.environment_settings.catalog_url}/api/0/packages/{package_name}'
         try:
             package_json = self.network_service.get(package_url)
-        except NetworkException:
+        except NetworkError:
             return None
         manifests = [Manifest.from_dict(version['manifest'])
                      for version in package_json['versions'].values()]

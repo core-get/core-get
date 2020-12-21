@@ -15,13 +15,38 @@ from core_get.options.common_options import CommonOptions
 COPY_BUFSIZE = 1024 * 1024 if os.name == 'nt' else 64 * 1024
 
 
+class DryRunFile(io.BytesIO):
+    def __init__(self, file_name: PurePath):
+        self._file_name = file_name
+
+    def __enter__(self):
+        super().__enter__()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        super().__exit__(exc_type, exc_val, exc_tb)
+        prev_pos = self.tell()
+        self.seek(0, io.SEEK_END)
+        length = self.tell()
+        self.seek(prev_pos, io.SEEK_SET)
+        print(f'Write {length} bytes to {self._file_name}')
+
 @inject
 @dataclass
 class FileSystem:
     common_options: CommonOptions
 
+    def open_read(self, file_path: PurePath) -> IO[bytes]:
+        return open(file_path, 'rb')
+
+    def open_write(self, file_path: PurePath) -> IO[bytes]:
+        if self.common_options.dry_run:
+            return DryRunFile(file_path)
+
+        return open(file_path, 'wb')
+
     def read_file(self, file_path: PurePath) -> bytes:
-        with open(file_path, 'rb') as file:
+        with self.open_read(file_path) as file:
             return file.read()
 
     def write_file(self, file_path: PurePath, contents: bytes) -> HashDigest:
@@ -37,7 +62,7 @@ class FileSystem:
 
         destination_path = Path(file_path)
         destination_path.parent.mkdir(parents=True, exist_ok=True)
-        with destination_path.open('wb') as destination_stream:
+        with self.open_write(destination_path) as destination_stream:
             h, _ = self.transfer_and_hash(read, destination_stream.write)
             return h
 

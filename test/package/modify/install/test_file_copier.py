@@ -19,7 +19,7 @@ class TestFileCopier(TestCase):
         stream = Mock()
         stream.__enter__ = Mock(return_value=stream)
         stream.__exit__ = Mock()
-        flat_file.open = Mock(return_value=stream)
+        flat_file.open_read = Mock(return_value=stream)
         flat_directory = FlatDirectory([flat_file])
         file_copier = FileCopier(file_system)
         manifest = Manifest('my_package', variant_manifests={'my_variant': VariantManifest('MYDEV', ['src/*'])})

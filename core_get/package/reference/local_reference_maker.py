@@ -18,7 +18,7 @@ class LocalReferenceMaker:
     def make(self, name: str) -> Optional[LocalPackageReference]:
         path = PurePath(name)
         zip_file = zipfile.ZipFile(path)
-        with zip_file.open('Core.toml') as file:
+        with zip_file.open('Core.toml', 'r') as file:
             manifest_data = file.read()
             manifest = self.toml_serializer.from_bytes(manifest_data, Manifest)
 
