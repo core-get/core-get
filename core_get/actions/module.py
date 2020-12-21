@@ -15,6 +15,8 @@ from core_get.actions.publish.publish import Publish
 from core_get.actions.publish.publish_options import PublishOptions
 from core_get.actions.remove.remove import Remove
 from core_get.actions.remove.remove_options import RemoveOptions
+from core_get.actions.test.test import Test
+from core_get.actions.test.test_options import TestOptions
 from core_get.actions.yank.yank import Yank
 from core_get.actions.yank.yank_options import YankOptions
 from core_get.options.options import Options

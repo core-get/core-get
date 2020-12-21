@@ -25,6 +25,7 @@ setup(name='core-get',
           'appdirs~=1.4.4',
           'semver~=2.13.0',
           'requests~=2.25.0',
+          'vunit-hdl~=4.4.0',
       ],
       tests_require=[
           'pytest-httpserver~=0.3.6',
