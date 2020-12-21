@@ -1,5 +1,8 @@
 tomlkit~=0.7.0
-injector~=0.18.3
+injector~=0.18.4
 appdirs~=1.4.4
 semver~=2.13.0
 requests~=2.25.0
+setuptools~=50.3.2
+pytest-httpserver~=0.3.6'
+Werkzeug~=1.0.1

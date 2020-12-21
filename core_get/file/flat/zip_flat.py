@@ -12,8 +12,8 @@ class ZipFlatFile(FlatFile):
     _zip_file: zipfile.ZipFile
     _zip_info: zipfile.ZipInfo
 
-    def open(self, mode) -> IO[bytes]:
-        return self._zip_file.open(self._zip_info.filename, mode=mode)
+    def open_read(self) -> IO[bytes]:
+        return self._zip_file.open(self._zip_info.filename, mode='r')
 
     @property
     def path(self) -> PurePath:

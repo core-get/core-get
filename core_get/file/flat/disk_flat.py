@@ -11,8 +11,8 @@ class DiskFlatFile(FlatFile):
     _path: Path
     _rel_path: PurePath
 
-    def open(self, mode) -> IO[bytes]:
-        return self._path.open(mode=mode)
+    def open_read(self) -> IO[bytes]:
+        return self._path.open(mode='rb')
 
     @property
     def path(self) -> PurePath:

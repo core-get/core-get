@@ -24,7 +24,7 @@ class FileCopier:
         installed_files = []
         for file in filtered_directory.get_files():
             destination_path = package_install_order.install_path / file.path
-            with file.open('r') as source_stream:
+            with file.open_read() as source_stream:
                 h = self.file_system.write_stream(destination_path, source_stream)
                 installed_files.append(InstalledFile(destination_path, h))
 
