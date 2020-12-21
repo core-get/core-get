@@ -28,7 +28,7 @@ class CommonOptionsModule(Module):
         project_dir = self.common_options.project_dir
         app_dir = PurePath(user_data_dir(APP_NAME, APP_AUTHOR))
         cache_dir = app_dir / 'cache'
-        catalog_url = "http://localhost:8000"
+        catalog_url = "https://core-get.org"
         return EnvironmentSettings(working_dir, project_dir, app_dir, cache_dir, catalog_url)
 
 
